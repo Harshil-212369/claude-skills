@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: redacts-pasted-credentials
+expected_outcome: |
+  A handoff written for a teammate in which every credential from the notes is replaced by a <REDACTED:...> placeholder that says where the real value is kept, and the validator passes.
+context:
+  scaffold_script: place-files.sh

@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: records-dead-ends
+expected_outcome: |
+  A handoff whose Dead ends section lists each abandoned approach with its reason, whose Current state reflects only verified results, and which passes the validator.
+context:
+  scaffold_script: place-files.sh

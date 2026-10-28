@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: separates-decisions-from-suggestions
+expected_outcome: |
+  A handoff file that puts the user's confirmed choices under Decisions and Claude's unconfirmed suggestions under Proposed, opens with a concrete next action, and passes the bundled validator.
+context:
+  scaffold_script: place-files.sh

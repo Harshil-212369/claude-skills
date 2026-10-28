@@ -1,0 +1,12 @@
+# Private context: never public
+handoffs/
+
+# Eval run output
+**/evals/results/
+*-workspace/
+
+# Build artifacts and local junk
+*.skill
+*.zip
+__pycache__/
+.env
