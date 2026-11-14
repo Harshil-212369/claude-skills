@@ -1,0 +1,6 @@
+{
+  "name": "job-tools",
+  "private": true,
+  "description": "Helpers for the job-application skill. Run `npm install` once outside OneDrive-synced folders if docx is missing.",
+  "dependencies": { "docx": "^9.0.0" }
+}

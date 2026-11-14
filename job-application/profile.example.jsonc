@@ -1,0 +1,28 @@
+// profile.example.jsonc: the public, redacted template of profile.json(c).
+// Copy it to profile.jsonc (gitignored) and fill in your own details.
+// Comments like these are allowed: the scripts strip them before parsing (JSONC).
+{
+  "job_root": "~/jobs",                          // optional: folder holding your term folders ("Fall 2026", ...)
+                                                 // omit it if these scripts sit one level inside that folder
+  "name": "Your Name",
+  "phone": "555-555-5555",                       // redacted
+  "email": "you@example.com",                    // redacted
+  "letter_location": "City, ON A1A 1A1",         // shown under your name in cover letters
+  "form_address": "1 Example St, City, ON A1A 1A1", // used only for application forms
+  "links": [
+    {"text": "linkedin.com/in/your-handle", "url": "https://linkedin.com/in/your-handle"},
+    {"text": "github.com/your-handle", "url": "https://github.com/your-handle"},
+    {"text": "yourwebsite.com", "url": "https://www.yourwebsite.com/"}  // link text = the domain itself
+  ],
+  "file_prefix_letter": "First_Last",
+  "file_prefix_resume": "FirstLast",
+  "lint": {
+    // finalize.py refuses to write final\ if these checks fail
+    "required_in_letter": ["yourwebsite.com", "City, ON A1A 1A1"],
+    "forbidden_everywhere": ["Website", "old-portfolio.netlify.app"],
+    "forbidden_by_mode": {
+      "coop": ["December 2026"],   // co-op/internship letters state the convocation date instead
+      "newgrad": ["June 2027"]     // new-grad letters state when you can start full-time
+    }
+  }
+}

@@ -1,0 +1,7 @@
+# Private: personal data and rules
+profile.json
+profile.md
+node_modules/
+__pycache__/
+
+profile.jsonc

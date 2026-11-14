@@ -1,0 +1,19 @@
+{
+  "title": "Cover Letter - Example Corp Software Developer",
+  "date": "November 13, 2026",
+  "addressee": ["The Hiring Team", "Example Corp", "100 Example Ave, Toronto, ON M5V 0A1"],
+  "re": "RE: Software Developer (New Graduate), Job ID 12345",
+  "salutation": "Dear Hiring Team,",
+  "blocks": [
+    {"p": "I am applying for the Software Developer (New Graduate) role. I finish my degree in December, so I can start any time next year."},
+    {"p": "One concrete reason this team, researched from the employer's own news, goes here."},
+    {"lead": "Here is what I would bring:"},
+    {"bullets": [
+      ["Testing: ", "A specific story with a number in it, mapped to a duty in the posting."],
+      ["Teamwork: ", "A second story, also something the resume backs up."]
+    ]},
+    {"boldLead": "Where I am still learning: ", "p": "One honest gap and how you would close it."},
+    {"p": "Thank you for your time and consideration. My resume is attached, and I would welcome the chance to talk."}
+  ],
+  "closing": "Best regards,"
+}
