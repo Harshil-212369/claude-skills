@@ -31,6 +31,19 @@ Every skill follows the same structure:
 └── evals/        # test cases in the layout `claude plugin eval` reads
 ```
 
+## Changelog
+
+### 2026-11-13
+
+- **job-application now runs straight from this repo.** It is symlinked into `~/.claude/skills/job-application`, so the copy on GitHub and the copy Claude Code loads are the same files. An edit takes effect immediately, and there's no second folder to keep in sync.
+- **Personal details never enter the repo folder.** job-application reads the profile from `JOB_PROFILE`, so it can live anywhere outside the clone. `python3 appdb.py` prints which profile and job folder the scripts use.
+- Added **job-application**.
+- context-handoff: the validator catches passwords written in prose ("password is …"), and 14 unit tests now cover it.
+
+### 2026-10-28
+
+- First release: **context-handoff** v1.0.0, symlinked into `~/.claude/skills/` from this repo, with a `.skill` file on [Releases](https://github.com/Harshil-212369/claude-skills/releases) for claude.ai.
+
 ## License
 
 MIT. See [LICENSE](LICENSE).
