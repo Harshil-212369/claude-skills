@@ -5,6 +5,7 @@ Skills I've written for [Claude Code](https://docs.claude.com/en/docs/claude-cod
 | Skill | What it does |
 |---|---|
 | [context-handoff](context-handoff/) | Turns a long chat or session into one handoff file that a fresh Claude session can resume from cold. It ships with a secret-scanning validator and evals. |
+| [job-application](job-application/) | Turns a pasted job posting into a checked application package (tailored resume, cover letter, merged CV) and tracks each application's status. |
 
 ## Install one skill
 
