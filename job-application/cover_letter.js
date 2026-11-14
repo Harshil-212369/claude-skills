@@ -41,8 +41,13 @@ function parseJsonc(text, file) {
   try { return JSON.parse(out.replace(/,(\s*[}\]])/g, '$1')); }
   catch (e) { console.error(`${file} is not valid JSON(C): ${e.message}`); process.exit(2); }
 }
-const profFile = ['profile.jsonc', 'profile.json'].map((f) => path.join(__dirname, f)).find((f) => fs.existsSync(f));
-if (!profFile) { console.error('No profile.jsonc/profile.json next to cover_letter.js (copy profile.example.jsonc)'); process.exit(2); }
+// $JOB_PROFILE wins, so personal details can live outside this folder (same rule as appdb.py).
+const profFile = process.env.JOB_PROFILE ||
+  ['profile.jsonc', 'profile.json'].map((f) => path.join(__dirname, f)).find((f) => fs.existsSync(f));
+if (!profFile || !fs.existsSync(profFile)) {
+  console.error('No profile found: set JOB_PROFILE, or put profile.jsonc next to cover_letter.js (copy profile.example.jsonc)');
+  process.exit(2);
+}
 const profile = parseJsonc(fs.readFileSync(profFile, 'utf8'), profFile);
 const c = parseJsonc(fs.readFileSync(inFile, 'utf8'), inFile);
 for (const k of ['date', 'addressee', 're', 'blocks']) {

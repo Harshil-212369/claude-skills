@@ -14,11 +14,11 @@ The scripts in this skill's folder do the steps that must come out the same ever
 
 ## Setup (once)
 
-- Copy `profile.example.jsonc` to `profile.jsonc` and `profile.example.md` to `profile.md`, then fill both in. Both are gitignored. `//` comments are allowed in the JSON.
+- Copy `profile.example.jsonc` to `profile.jsonc` and `profile.example.md` to `profile.md`, then fill both in. `//` comments are allowed in the JSON. Keep them next to the scripts (both are gitignored), or anywhere outside the clone with `JOB_PROFILE` set to the `profile.jsonc` path; `profile.md` is read from the same folder.
 - `job_root` in `profile.jsonc` (or the `JOB_ROOT` environment variable) points at the folder holding term folders such as `Fall 2026`. If neither is set, the scripts use the folder one level above this one.
 - Needs: Python 3.9+ with `pypdf` (or poppler's `pdfunite`), Node with the `docx` package (`npm install` here), LibreOffice for .docx to PDF, `pdflatex` for LaTeX resumes.
 
-**Step 0, every time:** read `profile.md` and `profile.jsonc`. They hold the applicant's facts and standing rules: date wording by role type, claims that are verified or must never be made, skills not held, voice, and addresses used before. They beat anything recalled from older letters.
+**Step 0, every time:** run `python3 appdb.py` to print where the profile, rules file and job root are, then read `profile.md` and the profile JSON. They hold the applicant's facts and standing rules: date wording by role type, claims that are verified or must never be made, skills not held, voice, and addresses used before. They beat anything recalled from older letters.
 
 ## Folder layout
 

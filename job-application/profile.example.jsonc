@@ -1,5 +1,6 @@
 // profile.example.jsonc: the public, redacted template of profile.json(c).
-// Copy it to profile.jsonc (gitignored) and fill in your own details.
+// Copy it to profile.jsonc (gitignored) and fill in your own details, or keep it
+// outside the clone and point the JOB_PROFILE environment variable at it.
 // Comments like these are allowed: the scripts strip them before parsing (JSONC).
 {
   "job_root": "~/jobs",                          // optional: folder holding your term folders ("Fall 2026", ...)

@@ -43,18 +43,30 @@ def strip_json_comments(text: str) -> str:
     return re.sub(r",(\s*[}\]])", r"\1", "".join(out))
 
 
-def load_profile() -> dict:
-    """Load profile.jsonc (preferred) or profile.json from the tools folder; comments allowed."""
-    import json
+def profile_path() -> Path:
+    """The profile to use. $JOB_PROFILE wins, so personal details can live outside
+    this folder (and outside any git clone); else profile.jsonc/.json next to the scripts."""
+    import os
+    if os.environ.get("JOB_PROFILE"):
+        return Path(os.environ["JOB_PROFILE"]).expanduser()
     here = Path(__file__).resolve().parent
     for name in ("profile.jsonc", "profile.json"):
-        p = here / name
-        if p.exists():
-            try:
-                return json.loads(strip_json_comments(p.read_text(encoding="utf-8")))
-            except json.JSONDecodeError as e:
-                raise SystemExit(f"ERROR: {p} is not valid JSON(C): {e}")
-    raise SystemExit(f"ERROR: no profile.jsonc or profile.json in {here} (copy profile.example.jsonc)")
+        if (here / name).exists():
+            return here / name
+    raise SystemExit(f"ERROR: no profile.jsonc or profile.json in {here} "
+                     "(copy profile.example.jsonc, or set JOB_PROFILE)")
+
+
+def load_profile() -> dict:
+    """Load the profile from profile_path(); comments allowed."""
+    import json
+    p = profile_path()
+    try:
+        return json.loads(strip_json_comments(p.read_text(encoding="utf-8")))
+    except OSError as e:
+        raise SystemExit(f"ERROR: cannot read profile {p}: {e}")
+    except json.JSONDecodeError as e:
+        raise SystemExit(f"ERROR: {p} is not valid JSON(C): {e}")
 
 
 def _job_root() -> Path:
@@ -137,6 +149,14 @@ def find_records(root: Path = ROOT, max_depth: int = 5) -> list[Path]:
     return sorted(out)
 
 
+def where() -> None:
+    """Print the files and folder the scripts will use (python3 appdb.py)."""
+    p = profile_path()
+    print(f"profile:  {p}")
+    print(f"rules:    {p.with_name('profile.md')}")
+    print(f"job_root: {ROOT}")
+
+
 def match(query: str, root: Path = ROOT) -> list[Path]:
     q = query.lower()
     hits = []
@@ -147,3 +167,7 @@ def match(query: str, root: Path = ROOT) -> list[Path]:
         if all(word in hay for word in q.split()):
             hits.append(p)
     return hits
+
+
+if __name__ == "__main__":
+    where()

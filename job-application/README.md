@@ -36,7 +36,7 @@ Fall 2026\Acme new grad 2027\
 - **Deterministic steps are scripts.** Formatting and checks are code, so they come out the same every run instead of being re-derived from a prompt.
 - **Data lives with the work.** Each role folder carries its own `application.md`, so there is no separate tracker to drift out of date.
 - **Status is never inferred.** `mark --status submitted` needs an explicit date from the applicant.
-- **Private data stays out of git.** Personal details and rules live in `profile.jsonc` / `profile.md`, which are gitignored.
+- **Private data stays out of git.** Personal details and rules live in `profile.jsonc` / `profile.md`. Keep them next to the scripts (gitignored) or, better, outside the clone entirely with `JOB_PROFILE`, so nothing personal ever sits in the repo folder.
 
 ## Install
 
@@ -48,6 +48,8 @@ ln -s "$PWD" ~/.claude/skills/job-application                                # C
 ```
 
 Set `job_root` in `profile.jsonc` (or `export JOB_ROOT=...`) to the folder holding your term folders.
+To keep your profile outside the clone, `export JOB_PROFILE=/path/to/profile.jsonc` instead of copying it here.
+`python3 appdb.py` prints which profile and job root the scripts will use.
 Requires Python 3.9+, Node 18+, LibreOffice (`soffice`) and, for LaTeX resumes, `pdflatex`.
 
 ## License
