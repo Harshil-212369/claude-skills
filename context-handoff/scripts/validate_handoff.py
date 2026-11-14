@@ -60,6 +60,15 @@ SECRET_PATTERNS = [
             r"['\"]?(?!<REDACTED)[^\s'\"<>`]{8,}"
         ),
     ),
+    # Prose like "the DB password is hunter2-staging-9981". Requiring both a
+    # letter and a digit skips sentences such as "the password is required".
+    (
+        "credential in prose",
+        re.compile(
+            r"(?i)\b(?:password|passwd|passphrase|secret|api[_-]?key|token)\s+(?:is|was)\s+"
+            r"['\"]?(?!<REDACTED)(?=[^\s'\"<>`]*[0-9])(?=[^\s'\"<>`]*[A-Za-z])[^\s'\"<>`]{8,}"
+        ),
+    ),
 ]
 
 # A bare 64-hex string is a tx hash or a private key; context decides.

@@ -55,7 +55,7 @@ python3 scripts/validate_handoff.py handoffs/2026-10-27-scheduler-flake.md --jso
 | Check | Level |
 |---|---|
 | All 10 required sections present | ERROR |
-| Credential patterns (Anthropic/OpenAI/AWS/GitHub/Slack/Google keys, PEM, JWT, `password=` assignments) | ERROR |
+| Credential patterns (Anthropic/OpenAI/AWS/GitHub/Slack/Google keys, PEM, JWT, `password=` assignments, prose such as "password is hunter2-9981") | ERROR |
 | 64-hex value next to "private"/"seed"/"mnemonic" wording | ERROR |
 | Unfilled template placeholders, `TODO`/`TBD` | ERROR |
 | Bare 64-hex value (could be a tx hash or a key) | WARN |
